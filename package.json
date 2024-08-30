@@ -1,0 +1,22 @@
+{
+    "name": "venanjs-project",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "venan": "node app.js",
+        "docker:build": "docker-compose build",
+        "docker:up": "docker-compose up -d",
+        "venan:arch": "node ./node_modules/venanjs/setupArchitecture.js",
+        "venan:handlebars": "node ./handlebars.config.js"
+    },
+    "dependencies": {
+        "@prisma/client": "^5.19.0",
+        "body-parser": "^1.20.2",
+        "express": "^4.19.2",
+        "express-handlebars": "^8.0.1",
+        "prisma": "^5.19.0",
+        "uuid": "^10.0.0",
+        "venan-handlebars": "^1.4.11",
+        "venanjs": "^1.14.3"
+    }
+}
