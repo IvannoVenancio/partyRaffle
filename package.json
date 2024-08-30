@@ -4,6 +4,7 @@
     "main": "index.js",
     "scripts": {
         "venan": "node app.js",
+        "start": "node app.js",
         "docker:build": "docker-compose build",
         "docker:up": "docker-compose up -d",
         "venan:arch": "node ./node_modules/venanjs/setupArchitecture.js",
