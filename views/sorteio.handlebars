@@ -1,0 +1,82 @@
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            margin: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<div class="container">
+        <h1>Resultado do Sorteio</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Convidado</th>
+                    <th>Item</th>
+                    <th>Link do Sorteio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop para exibir os sorteados -->
+                {{#each sorteados}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{items}}</td>
+                    <td>{{link}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <a href="/" class="btn">Voltar</a>
+    </div>
