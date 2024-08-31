@@ -1,0 +1,39 @@
+#This is a docker-compose default configuration, You can change as much as you need 
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: app-venanjs
+    env_file:
+      - ./.env
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/home/app
+    command: >
+      sh -c "npx prisma migrate deploy &&
+             npm start"
+    networks:
+      - venanjs-default
+
+  mysqldb:
+    image: mysql:8.0.21
+    container_name: mysql-v1
+    env_file:
+      - ./.env
+    ports:
+      - 3306:3306
+    volumes:
+      - venanjs_default:/var/lib/mysql
+    networks:
+      - venanjs-default
+
+networks:
+  venanjs-default:
+    driver: bridge
+
+volumes:
+  venanjs_default: {}

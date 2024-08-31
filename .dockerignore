@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+.vscode
+dist
+node_modules
+package-lock.json
+npm-debug.log
+yarn.lock
+
+
+=======
+.vscode
+dist
+node_modules
+package-lock.json
+npm-debug.log
+yarn.lock
+
+
+>>>>>>> 271c9c6406d974f30a2f5af58c423a44f947c474
