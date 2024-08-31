@@ -10,7 +10,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - 80:8181
+      - 3001:3001
     volumes:
       - ./:/home
     command: >
@@ -21,11 +21,11 @@ services:
 
   mysqldb:
     image: mysql:8.0.21
-    container_name: mysql-v1
+    container_name: mysql-party
     env_file:
       - ./.env
     ports:
-      - 3306:3306
+      - 3307:3307
     volumes:
       - venanjs_default:/var/lib/mysql
     networks:
