@@ -16,6 +16,6 @@ COPY . .
 RUN npx prisma generate
 
 # Expõe a porta em que sua aplicação vai rodar
-EXPOSE 80
+EXPOSE 3001
 
 CMD ["npm", "start"]
