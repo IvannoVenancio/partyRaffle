@@ -7,6 +7,7 @@ exports.view = async(req, res) => {
         const list = await getList()      
         res.render("index", {list})  
     }catch(err){
+        console.log("ola>>>>>>",err)
         res.redirect("index")
     }      
 }
