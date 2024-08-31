@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root@mysqldb:3307/sorteio"
+  url      = "mysql://root:4321@mysqldb:3306/sorteio"
 }
 
 model Guest {
