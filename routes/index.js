@@ -8,9 +8,10 @@ indexRoutes.get('/guest', GuestController.view)
 indexRoutes.post('/guest', GuestController.create)
 indexRoutes.post('/sorteio', GuestController.realizarSorteio)
 indexRoutes.get('/sorteio', GuestController.viewSorteados)
-indexRoutes.get('/sorteio/:id', GuestController.sorteadoById)
+indexRoutes.get('/result/:id', GuestController.sorteadoById)
 indexRoutes.post('/list', ListController.create)
 indexRoutes.get('/', ListController.view)
+indexRoutes.get('/raffle/:id', GuestController.landingSorteio)
 
 module.exports = indexRoutes;
 

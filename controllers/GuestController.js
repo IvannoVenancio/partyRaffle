@@ -6,7 +6,7 @@ exports.viewSorteados = async(req, res) => {
     try {
         const sorteados = await getSorteio()
         sorteados.map(item =>{
-            const link = `${req.headers.origin}/sorteio/${item.id}` 
+            const link = `http://37.27.34.142:3000/raffle/${item.id}` 
             item.link = link
         })
              
@@ -20,6 +20,15 @@ exports.linkSorteado = async(req, res) => {
     try {
         const sorteados = await getSorteio()      
         res.render("sorteio", {sorteados})  
+    }catch(err){
+        console.log(err)
+        res.redirect("sorteio")
+    }      
+}
+exports.landingSorteio = async(req, res) => {    
+    try {
+        const sorteado = await getSorteioById(req.params.id)      
+        res.render("landing", {layout:'landing',sorteado})  
     }catch(err){
         console.log(err)
         res.redirect("sorteio")
@@ -47,7 +56,7 @@ exports.create = async(req, res) => {
 exports.sorteadoById = async(req, res) => {    
     try {
         const sorteado = await getSorteioById(req.params.id)
-        res.render("sorteado", {sorteado})  
+        res.render("sorteado", {layout:'sorteio',sorteado})  
     }catch(err){
         console.log(err)
     }      
@@ -72,13 +81,13 @@ exports.realizarSorteio = async (req, res) => {
             
         }));
 
-        resultado.map(async element =>{
+        await resultado.map(async element =>{
             await createSorteio(element);
         })
 
         const sorteados = await getSorteio()
         sorteados.map(item =>{
-            const link = `${req.headers.origin}/sorteio/${item.id}` 
+            const link = `http://37.27.34.142:3000/raffle/${item.id}` 
             item.link = link
         })
 

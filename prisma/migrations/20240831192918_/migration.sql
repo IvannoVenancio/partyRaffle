@@ -6,18 +6,22 @@
   - Added the required column `items` to the `list` table without a default value. This is not possible if the table is not empty.
 
 */
--- DropIndex
-DROP INDEX `sorteio_guest_id_fkey` ON `sorteio`;
+-- DropForeignKey
+ALTER TABLE `list_items` DROP FOREIGN KEY `list_items_list_id_fkey`;
 
--- DropIndex
-DROP INDEX `sorteio_list_id_fkey` ON `sorteio`;
+-- DropForeignKey
+ALTER TABLE `sorteio` DROP FOREIGN KEY `sorteio_guest_id_fkey`;
+
+-- DropForeignKey
+ALTER TABLE `sorteio` DROP FOREIGN KEY `sorteio_list_id_fkey`;
 
 -- AlterTable
 ALTER TABLE `list` DROP COLUMN `description`,
     ADD COLUMN `items` LONGTEXT NOT NULL;
 
+-- AlterTable
+ALTER TABLE `sorteio` MODIFY `list_id` VARCHAR(191) NULL,
+    MODIFY `guest_id` VARCHAR(191) NULL;
+
 -- DropTable
 DROP TABLE `list_items`;
-
--- AddForeignKey
-ALTER TABLE `sorteio` ADD CONSTRAINT `sorteio_guest_id_fkey` FOREIGN KEY (`guest_id`) REFERENCES `guest`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

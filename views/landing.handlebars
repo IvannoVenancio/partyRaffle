@@ -1,0 +1,12 @@
+
+    <div class="container">
+        <div class="logo">
+            <h1>O MATABICHO</h1>
+        </div>
+        {{#each sorteado}}
+        <a href="/result/{{id}}">
+        <button id="sorteioButton">Ver Resultado do Sorteio</button>
+        </a>
+        {{/each}}
+        <div id="resultado"></div>
+    </div>
