@@ -10,7 +10,7 @@ indexRoutes.post('/sorteio', GuestController.realizarSorteio)
 indexRoutes.get('/sorteio', GuestController.viewSorteados)
 indexRoutes.get('/sorteio/:id', GuestController.sorteadoById)
 indexRoutes.post('/list', ListController.create)
-indexRoutes.get('/', ListController.view)
+indexRoutes.get('/index', ListController.view)
 
 module.exports = indexRoutes;
 
