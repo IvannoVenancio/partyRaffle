@@ -19,8 +19,9 @@ services:
   mysqldb:
     image: mysql:8.0.21
     container_name: mysql-party
-    env_file:
-      - ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: 4321
+      MYSQLDB_DATABASE: sorteio
     ports:
       - 3307:3306
     volumes:
