@@ -22,7 +22,7 @@ services:
     env_file:
       - ./.env
     ports:
-      - 3307:3307
+      - 3307:3306
     volumes:
       - venanjs_default:/var/lib/mysql
     networks:
