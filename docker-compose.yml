@@ -14,7 +14,11 @@ services:
     volumes:
       - ./:/home/app
     networks:
-      - venanjs-default
+      - venanjs-default      
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
 
   mysqldb:
     image: mysql:8.0.21
