@@ -18,6 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(indexRoutes);
 
-app.listen(3001, () => {
-    console.log('Servidor rodando na porta 3001');
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
 });
