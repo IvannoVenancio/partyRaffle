@@ -7,8 +7,8 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: app-venanjs
-    env_file:
-      - ./.env
+    environment:
+      DATABASE_URL: "mysql://root:4321@mysqldb:3306/sorteio"
     ports:
       - 3000:3000
     volumes:
@@ -24,7 +24,7 @@ services:
     image: mysql:8.0.21
     container_name: mysql-party
     environment:
-      MYSQL_ROOT_PASSWORD: 4321
+      MYSQL_ROOT_PASSWORD: '4321'
       MYSQLDB_DATABASE: sorteio
     ports:
       - 3307:3306
