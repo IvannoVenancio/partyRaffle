@@ -12,10 +12,7 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - ./:/home
-    command: >
-      sh -c "npx prisma migrate deploy &&
-             npm start"
+      - ./:/home/app
     networks:
       - venanjs-default
 
