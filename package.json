@@ -1,7 +1,6 @@
 {
     "name": "venanjs-project",
     "version": "1.0.0",
-    "main": "index.js",
     "scripts": {
         "venan": "node index.js",
         "start": "node index.js",
