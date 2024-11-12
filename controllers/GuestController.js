@@ -1,4 +1,4 @@
-const { createGuest,getGuests, createSorteio, getSorteio, getSorteioById } = require('../services/GuestService')
+const { createGuest,getGuests, createSorteio, getSorteio, getSorteioById, getGuestById, getSorteioByGuestId } = require('../services/GuestService')
 const { getList } = require('../services/ListService')
 
 
@@ -34,6 +34,23 @@ exports.landingSorteio = async(req, res) => {
         res.redirect("sorteio")
     }      
 }
+exports.resultSorteio = async(req, res) => {    
+    try {     
+        res.render("sorteioResult", {layout:'result'})  
+    }catch(err){
+        console.log(err)
+        res.redirect("sorteio")
+    }      
+}
+exports.home = async(req, res) => {    
+    try {
+        const guestId = req.params.guestId ?? req.params.guestId    
+        res.render("index", {layout:'landing', guestId} )  
+    }catch(err){
+        console.log(err)
+        res.redirect("/index")
+    }      
+}
 exports.view = async(req, res) => {    
     try {
         const guests = await getGuests()      
@@ -55,8 +72,18 @@ exports.create = async(req, res) => {
 }
 exports.sorteadoById = async(req, res) => {    
     try {
+        const guestId = req.params.guestId
         const sorteado = await getSorteioById(req.params.id)
-        res.render("sorteado", {layout:'sorteio',sorteado})  
+        res.render("sorteado", {layout:'result',sorteado, guestId})  
+    }catch(err){
+        console.log(err)
+    }      
+}
+exports.sorteadoByGuestId = async(req, res) => {    
+    try {
+        const guestId = req.params.guestId
+        const sorteado = await getSorteioById(guestId)
+        res.render("sorteado", {layout:'result',sorteado, guestId})  
     }catch(err){
         console.log(err)
     }      
@@ -81,17 +108,25 @@ exports.realizarSorteio = async (req, res) => {
             
         }));
 
+        
+        let rs
+
         await resultado.map(async element =>{
-            await createSorteio(element);
+            if(!await getSorteioByGuestId(Number(element.guest_id))){
+                console.log("true")
+                rs = await createSorteio(element)
+            }
+                
         })
 
         const sorteados = await getSorteio()
+        console.log("req.origin>>>>", req.origin)
         sorteados.map(item =>{
-            const link = `http://37.27.34.142:3000/raffle/${item.id}` 
+            const link = `${req.origin}/${item.id}` 
             item.link = link
         })
 
-        res.render("sorteio", {sorteados});
+        res.render("sorteioResult", {sorteados});
 
     } catch (error) {
         console.error("Erro ao realizar o sorteio:", error);

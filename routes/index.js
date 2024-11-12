@@ -4,14 +4,17 @@ const GuestController = require('../controllers/GuestController')
 const ListController = require('../controllers/ListController')
 
 
-indexRoutes.get('/guest', GuestController.view)
+indexRoutes.get('/', GuestController.home)
+indexRoutes.get('/:guestId', GuestController.home)
 indexRoutes.post('/guest', GuestController.create)
-indexRoutes.post('/sorteio', GuestController.realizarSorteio)
-indexRoutes.get('/sorteio', GuestController.viewSorteados)
+indexRoutes.get('/guest', GuestController.view)
+indexRoutes.get('/result', GuestController.resultSorteio)
 indexRoutes.get('/result/:id', GuestController.sorteadoById)
+indexRoutes.get('/result/:guestId', GuestController.sorteadoByGuestId)
+indexRoutes.get('/sorteio', GuestController.realizarSorteio)
 indexRoutes.post('/list', ListController.create)
-indexRoutes.get('/', ListController.view)
-indexRoutes.get('/raffle/:id', GuestController.landingSorteio)
+indexRoutes.get('/list', ListController.view)
+
 
 module.exports = indexRoutes;
 

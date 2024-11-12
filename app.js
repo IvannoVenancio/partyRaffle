@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { engine } = require('express-handlebars');
 
 const indexRoutes = require('./routes/index');
+const path = require('path');
 const app = express();
 
 app.engine('handlebars', engine({
@@ -15,6 +16,7 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "assets")))
 
 app.use(indexRoutes);
 

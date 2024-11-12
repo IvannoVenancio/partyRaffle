@@ -5,7 +5,7 @@ const { createList, getList } = require("../services/ListService")
 exports.view = async(req, res) => {    
     try {
         const list = await getList()      
-        res.render("index", {list})  
+        res.render("list", {list})  
     }catch(err){
         console.log("ola>>>>>>",err)
         res.redirect("index")

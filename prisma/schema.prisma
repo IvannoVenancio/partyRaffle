@@ -9,22 +9,28 @@ datasource db {
 }
 
 model Guest {
-  id        String   @id @default(cuid())
-  name      String @db.VarChar(100)
+  id        Int   @id @default(autoincrement())
+  name      String @db.VarChar(100)  
+  created_at          DateTime @default(now()) @db.Timestamp(6)
+  updated_at          DateTime @updatedAt
 
   @@map("guest")
 }
 model List {
-  id        String     @id @default(cuid())
+  id        Int     @id @default(autoincrement())
   items      String @db.LongText
+  created_at          DateTime @default(now()) @db.Timestamp(6)
+  updated_at          DateTime @updatedAt
 
   @@map("list")
 }
 
 model Sorteio {
-  id        String     @id @default(cuid())
-  list_id String? 
-  guest_id     String?
+  id        Int     @id @default(autoincrement())
+  list_id Int? 
+  guest_id     Int?
+  created_at          DateTime @default(now()) @db.Timestamp(6)
+  updated_at          DateTime @updatedAt
 
   @@map("sorteio")
 }

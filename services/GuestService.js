@@ -26,9 +26,17 @@ const getSorteioById = async (id) => {
   where s.id = ${id}`;
   return result;
 };
+const getSorteioByGuestId = async (guestId) => {
+  const result = await Sorteio.findFirst({where:{guest_id:Number(guestId)}})
+  return result
+};
 
 const getGuests = async() =>{
   const result = await Guest.findMany()
+  return result
+}
+const getGuestById = async(id) =>{
+  const result = await Guest.findFirst({where:{id}})
   return result
 }
 
@@ -38,6 +46,8 @@ module.exports = {
     getGuests,
     createSorteio,
     getSorteio,
-    getSorteioById
+    getSorteioById,
+    getGuestById,
+    getSorteioByGuestId
 };
 
