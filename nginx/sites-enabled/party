@@ -1,0 +1,35 @@
+# --- + PROXY + ---
+# Template variables:
+#
+# * domain = 18.219.154.90
+# * name = cetim-website
+# * type = proxy
+# *  host = localhost
+# * port = 8181
+
+upstream party-lb {
+    server 65.108.149.153:3000;
+}
+
+server{
+        server_name nossomatabicho.com;
+        listen 3000;
+
+        location / {
+          proxy_set_header Host $host;
+          proxy_set_header x-Forwarded-Proto $scheme;
+          proxy_set_header x-Real-IP $remote_addr;
+          proxy_set_header x-Forwarded-For $proxy_add_x_forwarded_for;
+
+          proxy_pass http://party-lb;
+        }
+
+      #return 301 https://www.nossomatabicho.com$request_uri;
+      access_log /var/log/nginx/party.log;
+      error_log /var/log/nginx/party.log;
+
+	
+}
+
+
+# --- - PROXY - ---
