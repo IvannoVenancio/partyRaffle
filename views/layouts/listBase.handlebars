@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados dos Sorteios</title>
+    <title>Nova Lista - Envio para WhatsApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <style>
         /* Configuração de fundo da página */
         body {
@@ -33,27 +35,67 @@
             z-index: 1;
         }
 
-        /* Conteúdo centralizado */
-        .container {
+        /* Sobreposição */
+        .overlay {
             position: relative;
-            background-color: rgba(255, 255, 255, 0.85);
-            max-width: 900px;
-            width: 90%;
+            background-color: rgba(255, 255, 255, 0.85); /* mesmo fundo semi-transparente das outras páginas */
             padding: 30px;
-            margin: auto;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
             z-index: 2;
             text-align: center;
         }
 
-        /* Estilos de cabeçalho */
+        /* Título estilizado */
         h1 {
-            color: #333;
-            margin-bottom: 20px;
+            font-family: 'Arial', cursive;
+            font-size: 2rem;
+            color: #ff7f50;
+            text-align: center;
+            margin: 0 0 20px;
         }
 
-        /* Tabela */
+        /* Estilos do formulário */
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ff7f50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff7f50;
+        }
+
+        /* Estilos da tabela */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -62,22 +104,21 @@
 
         th, td {
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #d79393;
             text-align: left;
         }
 
         th {
-            background-color: #f8f8f8;
-            font-weight: bold;
+            background-color: #ff7f50;
+            color: white;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f4d1d1;
         }
 
-
-
-                .copy-btn {
+        /* Botão de cópia para WhatsApp */
+        .copy-btn {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -125,23 +166,10 @@
             background-color: #ddd;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMPOvA1z/TrFf5A6nKK4lSCARFIIX9JFiAN4M" crossorigin="anonymous">
 </head>
 <body>
-    {{{body}}}
-     <script>
-        function copyLink(id) {
-            const linkParaCopiar = `http://nossomatabicho.com/${id}`;
-            navigator.clipboard.writeText(linkParaCopiar)
-                .then(() => {
-                    const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(linkParaCopiar)}`;
-                    window.open(urlWhatsApp, "_blank");
-                    alert("Link copiado e pronto para enviar no WhatsApp!");
-                })
-                .catch(err => {
-                    console.error("Falha ao copiar o link: ", err);
-                });
-        }
-    </script>
+{{{body}}}
+
 </body>
 </html>
+

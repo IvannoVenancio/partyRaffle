@@ -74,34 +74,12 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
+              /* Botão de cópia para WhatsApp */
+
     </style>
 </head>
 <body>
-
-    <div class="background"></div>
-    <div class="container">
-        <h1>Resultados dos Sorteios</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Item</th>
-                    <th>Data do Sorteio</th>
-                    <th>Número do Sorteio</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each draws}}
-                <tr>
-                    <td>{{this.name}}</td>
-                    <td>{{this.item}}</td>
-                    <td>{{this.date}}</td>
-                    <td>{{this.drawNumber}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-
+    {{{body}}}
 </body>
 </html>

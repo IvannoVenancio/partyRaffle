@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados dos Sorteios</title>
+    <title>Convidados</title>
     <style>
         /* Configuração de fundo da página */
         body {
@@ -36,8 +36,8 @@
         /* Conteúdo centralizado */
         .container {
             position: relative;
-            background-color: rgba(255, 255, 255, 0.85);
-            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.85); /* mesmo fundo semi-transparente das outras páginas */
+            max-width: 800px;
             width: 90%;
             padding: 30px;
             margin: auto;
@@ -50,7 +50,44 @@
         /* Estilos de cabeçalho */
         h1 {
             color: #333;
+        }
+
+        /* Formulário */
+        form {
+            margin-bottom: 40px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
             margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff7f50;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff7f50;
         }
 
         /* Tabela */
@@ -68,38 +105,23 @@
 
         th {
             background-color: #f8f8f8;
-            font-weight: bold;
         }
 
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
 
-
-
-                .copy-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 12px;
-            font-size: 14px;
-            background-color: #25D366;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .form-section {
+            margin-bottom: 20px;
         }
 
-        .copy-btn:hover {
-            background-color: #1ebc5c;
+        .form-section h2 {
+            color: #444;
+            font-size: 20px;
+            margin-bottom: 15px;
         }
 
-        .copy-btn i {
-            margin-right: 8px;
-        }
-
-                      /* Menu */
+              /* Menu */
         .menu {
             display: flex;
             justify-content: center;
@@ -124,24 +146,11 @@
         .menu a:hover {
             background-color: #ddd;
         }
+
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMPOvA1z/TrFf5A6nKK4lSCARFIIX9JFiAN4M" crossorigin="anonymous">
 </head>
 <body>
     {{{body}}}
-     <script>
-        function copyLink(id) {
-            const linkParaCopiar = `http://nossomatabicho.com/${id}`;
-            navigator.clipboard.writeText(linkParaCopiar)
-                .then(() => {
-                    const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(linkParaCopiar)}`;
-                    window.open(urlWhatsApp, "_blank");
-                    alert("Link copiado e pronto para enviar no WhatsApp!");
-                })
-                .catch(err => {
-                    console.error("Falha ao copiar o link: ", err);
-                });
-        }
-    </script>
+
 </body>
 </html>

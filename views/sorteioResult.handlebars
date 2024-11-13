@@ -1,14 +1,36 @@
+
     <div class="background"></div>
-    <div class="overlay"></div>
+    <div class="container">
 
-    <h1>Resultado do Sorteio</h1>
-
-    <div class="winner-name" id="winnerName">Nome do Vencedor</div>
-
-    <div class="result-list">
-        <ul id="resultItems">
-            <!-- Lista de itens sorteados será inserida aqui -->
+                        <!-- Menu -->
+        <ul class="menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/back/list">Listas</a></li>
+            <li><a href="/back/guest">Convidados</a></li>
+            <li><a href="/back/result">Resultados</a></li>
         </ul>
+        <h1>Resultados dos Sorteios</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Item</th>
+                    <th>Número do Sorteio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each sorteados}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.items}}</td>
+                    <td>
+                        <button class="copy-btn" onclick="copyLink('{{this.id}}')">
+                            <i class="fab fa-whatsapp"></i> Enviar
+                        </button>
+                    </td>
+                </tr>
+                
+                {{/each}}
+            </tbody>
+        </table>
     </div>
-
-    <a href="pagina_inicial.html" class="button">Voltar</a>

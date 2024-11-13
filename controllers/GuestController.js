@@ -35,8 +35,9 @@ exports.landingSorteio = async(req, res) => {
     }      
 }
 exports.resultSorteio = async(req, res) => {    
-    try {     
-        res.render("sorteioResult", {layout:'result'})  
+    try { 
+        const sorteados = await getSorteio()
+        res.render("sorteioResult", {layout:'result', sorteados})  
     }catch(err){
         console.log(err)
         res.redirect("sorteio")
@@ -54,7 +55,7 @@ exports.home = async(req, res) => {
 exports.view = async(req, res) => {    
     try {
         const guests = await getGuests()      
-        res.render("guest", {guests})  
+        res.render("guest", {layout:'guestBase',guests})  
     }catch(err){
         console.log(err)
         res.redirect("/guest")
@@ -65,7 +66,7 @@ exports.create = async(req, res) => {
         const data = req.body
         await createGuest(data)  
         const guests = await getGuests()       
-        res.render("guest", {guests})  
+        res.render("guest", {layout:'guestBase',guests})  
     }catch(err){
         res.redirect("/guest")
     }      
@@ -126,7 +127,7 @@ exports.realizarSorteio = async (req, res) => {
             item.link = link
         })
 
-        res.render("sorteioResult", {sorteados});
+        res.render("sorteioResult",  {layout:'result', sorteados});
 
     } catch (error) {
         console.error("Erro ao realizar o sorteio:", error);
