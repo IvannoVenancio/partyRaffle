@@ -8,7 +8,7 @@
 # * port = 8181
 
 upstream party-lb {
-    server 65.108.149.153:3000;
+    server www.nossomatabicho.com:3000;
 }
 
 server{
@@ -24,7 +24,7 @@ server{
           proxy_pass http://party-lb;
         }
 
-      #return 301 https://www.nossomatabicho.com$request_uri;
+      return 301 http://www.nossomatabicho.com$request_uri;
       access_log /var/log/nginx/party.log;
       error_log /var/log/nginx/party.log;
 
