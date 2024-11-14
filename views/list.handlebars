@@ -21,6 +21,7 @@
                 <tr>
                     <th>Ref</th>
                     <th>Itens</th>
+                    <th>Acção</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,11 @@
                 <tr>
                     <td>{{this.id}}</td>
                     <td>{{this.items}}</td>
+                    <form action="/back/list/{{this.id}}" method="post">
+                        <td>
+                            <input type="submit" value="Eliminar">
+                        </td>
+                    </form>
                 </tr>
                 {{/each}}
             </tbody>

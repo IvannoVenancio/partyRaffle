@@ -1,4 +1,4 @@
-const { createGuest,getGuests, createSorteio, getSorteio, getSorteioById, getGuestById, getSorteioByGuestId } = require('../services/GuestService')
+const { createGuest,getGuests, createSorteio, getSorteio, getSorteioById, getGuestById, getSorteioByGuestId, deleteGuest } = require('../services/GuestService')
 const { getList } = require('../services/ListService')
 
 
@@ -59,6 +59,16 @@ exports.view = async(req, res) => {
     }catch(err){
         console.log(err)
         res.redirect("/guest")
+    }      
+}
+exports.delete = async(req, res) => {    
+    try {
+        const id = Number(req.params.id)
+        await deleteGuest(id)      
+        res.redirect("/back/guest")  
+    }catch(err){
+        console.log(err)
+        res.redirect("/back/guest")
     }      
 }
 exports.create = async(req, res) => {    

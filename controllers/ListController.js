@@ -1,4 +1,4 @@
-const { createList, getList } = require("../services/ListService")
+const { createList, getList, deleteList } = require("../services/ListService")
 
 
 
@@ -20,6 +20,16 @@ exports.create = async(req, res) => {
         res.render("list", {list})  
     }catch(err){
         res.redirect("index")
+    }      
+}
+exports.delete = async(req, res) => {    
+    try {
+        const id = Number(req.params.id)
+        await deleteList(id)   
+        await getList()    
+        res.redirect("/back/list")  
+    }catch(err){
+        res.redirect("/back/list")
     }      
 }
 

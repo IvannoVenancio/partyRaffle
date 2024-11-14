@@ -24,16 +24,23 @@
                 <tr>
                     <form action="/back/sorteio" method="post">
                         <th><input type="submit" value="Sortear"></th>
-                    </form>                    
+                    </form>
+                     <th></th>                    
                 </tr>
                 <tr>
                     <th>Nome</th>
+                    <th>acção</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each guests}}
                 <tr>
                     <td>{{this.name}}</td>
+                    <form action="/back/guest/{{this.id}}" method="post">
+                    <td>
+                        <input type="submit" value="Eliminar">
+                    </td>
+                    </form>
                 </tr>
                 {{/each}}
             </tbody>

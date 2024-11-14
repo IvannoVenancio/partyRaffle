@@ -39,6 +39,10 @@ const getGuestById = async(id) =>{
   const result = await Guest.findFirst({where:{id}})
   return result
 }
+const deleteGuest = async(id) =>{
+  const result = await Guest.delete({where:{id}})
+  return result
+}
 
 
 module.exports = { 
@@ -48,6 +52,7 @@ module.exports = {
     getSorteio,
     getSorteioById,
     getGuestById,
-    getSorteioByGuestId
+    getSorteioByGuestId,
+    deleteGuest
 };
 

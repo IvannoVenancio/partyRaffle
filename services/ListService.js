@@ -13,10 +13,15 @@ const getList = async() =>{
   const result = await Lists.findMany()
   return result
 }
+const deleteList = async(id) =>{
+  const result = await Lists.delete({where:{id}})
+  return result
+}
 
 
 module.exports = {
     createList,
-    getList
+    getList,
+    deleteList
 };
 
