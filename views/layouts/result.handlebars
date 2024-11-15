@@ -130,18 +130,27 @@
 <body>
     {{{body}}}
      <script>
-        function copyLink(id) {
-            const linkParaCopiar = `http://nossomatabicho.com/${id}`;
-            navigator.clipboard.writeText(linkParaCopiar)
-                .then(() => {
-                    const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(linkParaCopiar)}`;
-                    window.open(urlWhatsApp, "_blank");
-                    alert("Link copiado e pronto para enviar no WhatsApp!");
-                })
-                .catch(err => {
-                    console.error("Falha ao copiar o link: ", err);
-                });
-        }
+function copyLink(id) {
+    const linkParaCopiar = `http://nossomatabicho.com/${id}`;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        // Se a API Clipboard estiver disponível
+        navigator.clipboard.writeText(linkParaCopiar)
+            .then(() => {
+                const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(linkParaCopiar)}`;
+                window.open(urlWhatsApp, "_blank");
+                alert("Link copiado e pronto para enviar no WhatsApp!");
+            })
+            .catch(err => {
+                console.error("Falha ao copiar o link: ", err);
+                alert("Não foi possível copiar o link. Tente manualmente.");
+            });
+    } else {
+        // API Clipboard não está disponível
+        alert("Seu navegador não suporta a funcionalidade de copiar. Copie manualmente o link: " + linkParaCopiar);
+    }
+}
+
     </script>
 </body>
 </html>
