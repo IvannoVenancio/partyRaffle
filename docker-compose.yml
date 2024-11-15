@@ -11,6 +11,11 @@ services:
       DATABASE_URL: "mysql://root:4321@mysqldb:3306/sorteio"
     ports:
       - 3000:3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`nossomatabicho.com`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls.certresolver=myresolver"
     volumes:
       - ./:/home/app
     networks:
@@ -20,19 +25,38 @@ services:
     links:
       - mysqldb
 
-  web:
-    image: nginx:1.17-alpine
-    container_name: nginx-party
-    restart: unless-stopped
-    ports: 
-      - 80:80
+  traefik:
+    image: traefik:v2.9
+    container_name: traefik
+    command:
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--providers.docker=true"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=geral@nossomatabicho.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
-      - ./nginx/sites-enabled:/etc/nginx/sites-enabled/      
-      - ./nginx/default.conf:/etc/nginx/default.conf
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - venanjs-default
+
+  #web:
+  #  image: nginx:1.17-alpine
+  #  container_name: nginx-party
+  #  restart: unless-stopped
+  #  ports: 
+  #    - 80:80
+  #  volumes:
+  #    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #    - ./nginx/conf.d/:/etc/nginx/conf.d/
+  #    - ./nginx/sites-enabled:/etc/nginx/sites-enabled/      
+  #    - ./nginx/default.conf:/etc/nginx/default.conf
+  #  networks:
+  #    - venanjs-default
 
   mysqldb:
     image: mysql:8.0.21
