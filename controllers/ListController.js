@@ -17,7 +17,7 @@ exports.create = async(req, res) => {
         const data = req.body
         await createList(data)   
         const list = await getList()    
-        res.render("list", {list})  
+        res.render("list", {layout:'listBase',list})  
     }catch(err){
         res.redirect("index")
     }      

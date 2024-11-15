@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convidados</title>
     <style>
-        /* Configuração de fundo da página */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -18,7 +17,6 @@
             color: #333;
         }
 
-        /* Imagem de fundo */
         .background {
             position: absolute;
             top: 0;
@@ -33,10 +31,9 @@
             z-index: 1;
         }
 
-        /* Conteúdo centralizado */
         .container {
             position: relative;
-            background-color: rgba(255, 255, 255, 0.85); /* mesmo fundo semi-transparente das outras páginas */
+            background-color: rgba(255, 255, 255, 0.85);
             max-width: 800px;
             width: 90%;
             padding: 30px;
@@ -47,12 +44,10 @@
             text-align: center;
         }
 
-        /* Estilos de cabeçalho */
         h1 {
             color: #333;
         }
 
-        /* Formulário */
         form {
             margin-bottom: 40px;
         }
@@ -90,38 +85,6 @@
             background-color: #ff7f50;
         }
 
-        /* Tabela */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f8f8f8;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .form-section {
-            margin-bottom: 20px;
-        }
-
-        .form-section h2 {
-            color: #444;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-              /* Menu */
         .menu {
             display: flex;
             justify-content: center;
@@ -147,6 +110,43 @@
             background-color: #ddd;
         }
 
+        /* Configuração do scroll na tabela */
+        .table-container {
+            max-height: 300px; /* Altura máxima do contêiner */
+            overflow-y: auto; /* Habilita o scroll vertical */
+            margin-top: 20px;
+            border: 1px solid #ddd; /* Adiciona borda para destacar o contêiner */
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f8f8;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section h2 {
+            color: #444;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>

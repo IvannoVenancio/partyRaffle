@@ -1,6 +1,5 @@
     <div class="background"></div>
     <div class="container">
-                <!-- Menu -->
         <ul class="menu">
             <li><a href="/">Home</a></li>
             <li><a href="/back/list">Listas</a></li>
@@ -14,35 +13,36 @@
                 <label for="items">Nome:</label>
                 <input type="text" name="name">
             </div>
-
             <button type="submit">Salvar</button>
         </form>
 
         <h1>Listas</h1>
-        <table>
-            <thead>
-                <tr>
-                    <form action="/back/sorteio" method="post">
-                        <th><input type="submit" value="Sortear"></th>
-                    </form>
-                     <th></th>                    
-                </tr>
-                <tr>
-                    <th>Nome</th>
-                    <th>acção</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each guests}}
-                <tr>
-                    <td>{{this.name}}</td>
-                    <form action="/back/guest/{{this.id}}" method="post">
-                    <td>
-                        <input type="submit" value="Eliminar">
-                    </td>
-                    </form>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <form action="/back/sorteio" method="post">
+                            <th><input type="submit" value="Sortear"></th>
+                        </form>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Acção</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each guests}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <form action="/back/guest/{{this.id}}" method="post">
+                        <td>
+                            <input type="submit" value="Eliminar">
+                        </td>
+                        </form>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
     </div>
